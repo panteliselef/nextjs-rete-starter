@@ -1,0 +1,27 @@
+{
+  "name": "templateforv2-nextjs",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "rete": "^1.5.0-rc1",
+    "rete-area-plugin": "^0.2.1",
+    "rete-connection-plugin": "^0.9.0",
+    "rete-context-menu-plugin": "^1.0.0-alpha9",
+    "rete-react-render-plugin": "^0.3.0",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.9"
+  },
+  "keywords": [],
+  "description": ""
+}
