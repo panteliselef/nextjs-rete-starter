@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Control } from "rete";
 
-// React v18
+// React v17
 const MyReactControl = ({ name, putData, id, emitter }) => {
   const [_name, _setName] = useState(name);
 
@@ -31,8 +31,6 @@ export class MyControl extends Control {
       id: key,
       name,
       putData: (...args) => {
-        // console.log("key: " + args[0]);
-        // console.log("value: " + args[1]);
         this.putData(args[0], args[1]);
       },
     };

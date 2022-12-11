@@ -18,7 +18,6 @@ class AddComponent extends Rete.Component {
     var out = new Rete.Output("out", "OutConnection", numSocket, true);
 
     var ctrl = new MyControl(this.editor, "Input", node.data.Input);
-    // var ctrl2 = new MyControl(this.editor, "Output", "#dab");
     return node.addInput(inp).addOutput(out).addControl(ctrl); //.addControl(ctrl2);
   }
 
@@ -26,9 +25,6 @@ class AddComponent extends Rete.Component {
     outputs["Input"] = node.data.Input;
   }
 }
-
-var lastSelectedNodeID = null;
-var lastSelectedNode = null;
 
 export default async function Editor(container) {
   console.log(container);
@@ -71,49 +67,29 @@ export default async function Editor(container) {
   editor.on("nodecreated", async (node) => {
     console.log("nodecreated");
     console.log(node.id);
-    // console.log(connection);
     await engine.abort();
     await engine.process(editor.toJSON());
-    // console.log(JSON.stringify(editor.toJSON()));
   });
   editor.on("noderemoved", async (node) => {
     console.log("noderemoved");
     console.log(node.id);
-    // console.log(connection);
     await engine.abort();
     await engine.process(editor.toJSON());
-    // console.log(JSON.stringify(editor.toJSON()));
   });
 
   editor.on("process", async () => {
     console.log("process");
-    console.log(lastSelectedNodeID);
-    if (lastSelectedNode != null) {
-      // var a = {Input:"poop"};
-      // lastSelectedNode.data = a;
-      // lastSelectedNode.controls.get("Input").props.name = "poop";
-      // editor.nodes[lastSelectedNodeID-1] = lastSelectedNode;
-      // console.log(lastSelectedNode.controls.get("Input"));
-    }
-    // console.log(connection);
-    // await editor.fromJSON(editor.toJSON());
     await engine.abort();
     await engine.process(editor.toJSON());
-    // console.log(JSON.stringify(editor.toJSON()));
   });
 
   editor.on("nodeselected", async (node) => {
     console.log("nodeselected");
     console.log(node.id);
-    lastSelectedNodeID = node.id;
-    lastSelectedNode = node;
 
     await engine.abort();
     await engine.process(editor.toJSON());
-    // console.log(JSON.stringify(editor.toJSON()));
   });
-
-  // editor.fromJSON(editor.toJSON());
 
   editor.view.resize();
   AreaPlugin.zoomAt(editor);
